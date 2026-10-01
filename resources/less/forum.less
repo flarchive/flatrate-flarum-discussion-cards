@@ -1,0 +1,288 @@
+// FORUM-SOCIAL-FEED-002 — card presentation only.
+// Native DiscussionListItem rows stay untouched when the actor gate is false.
+.DiscussionListItem--flatRateCard {
+  --flatRate-card-radius: 16px;
+  --flatRate-card-gap: 10px;
+  --flatRate-card-gutter: 10px;
+  --flatRate-card-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+
+  margin: 0 var(--flatRate-card-gutter) var(--flatRate-card-gap);
+  padding: 12px 12px 10px;
+  border: 0;
+  border-radius: var(--flatRate-card-radius);
+  background: var(--control-bg);
+  box-shadow: var(--flatRate-card-shadow);
+  overflow: hidden;
+  position: relative;
+
+  .DiscussionListItem-content {
+    display: grid;
+    grid-template-columns: auto auto minmax(0, 1fr);
+    grid-template-areas:
+      "votes avatar main"
+      "votes . count";
+    column-gap: 9px;
+    row-gap: 3px;
+    align-items: start;
+    padding: 0;
+    position: relative;
+  }
+
+  .DiscussionListItem-votes.alternateLayout {
+    grid-area: votes;
+    position: static;
+    left: auto;
+    top: auto;
+    width: 34px;
+    height: auto;
+    min-height: 42px;
+    margin-top: 1px;
+    align-self: start;
+  }
+
+  .DiscussionListItem-author {
+    grid-area: avatar;
+    margin: 0;
+    position: static;
+
+    .Avatar {
+      .Avatar--size(34px);
+    }
+  }
+
+  .DiscussionListItem-badges {
+    position: absolute;
+    left: 0;
+    top: -6px;
+    margin: 0;
+    width: auto;
+    z-index: 1;
+  }
+
+  .DiscussionListItem-main {
+    grid-area: main;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+    padding-right: 48px;
+  }
+
+  .DiscussionListItem-flatRateBoard {
+    margin: 0 0 1px;
+    color: var(--muted-color);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0.01em;
+  }
+
+  .DiscussionListItem-title {
+    margin: 0;
+    color: var(--heading-color);
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.28;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+  }
+
+  // Core unread titles are 600 and read titles are normal. The card's base
+  // weight must not invert that signal. This selector stays more specific
+  // than core's `.unread .DiscussionListItem-title` rule.
+  .DiscussionListItem-content.unread .DiscussionListItem-title {
+    font-weight: 800;
+  }
+
+  // Core read titles use
+  // `.DiscussionList:not(.DiscussionList--searchResults) .read .DiscussionListItem-title`,
+  // which outranks the card title rule and substitutes the muted mix token.
+  // Keep both read and unread card titles on the heading color.
+  .DiscussionListItem-content.read .DiscussionListItem-title,
+  .DiscussionListItem-content.unread .DiscussionListItem-title {
+    color: var(--heading-color);
+  }
+
+  .DiscussionListItem-flatRateExcerpt {
+    color: var(--muted-color);
+    font-size: 14px;
+    line-height: 1.45;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .DiscussionListItem-flatRateCover {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin: 4px 0 3px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--body-bg);
+
+    > img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .DiscussionListItem-flatRateByline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.32em;
+    min-height: 18px;
+    color: var(--muted-color);
+    font-size: 12.5px;
+    line-height: 1.3;
+
+    .username {
+      color: var(--heading-color);
+      font-weight: 600;
+    }
+  }
+
+  .DiscussionListItem-flatRateByline--creator {
+    margin-top: 2px;
+  }
+
+  .DiscussionListItem-flatRateByline--latest {
+    margin-left: 1px;
+  }
+
+  .DiscussionListItem-flatRateActivityDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    flex: 0 0 6px;
+    background: currentColor;
+    opacity: 0.7;
+  }
+
+  .DiscussionListItem-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px 10px;
+    margin: 3px 0 0;
+    padding-top: 4px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    color: var(--muted-color);
+    font-size: 12px;
+    line-height: 1.3;
+
+    > li {
+      display: inline-flex;
+      align-items: center;
+      max-width: 100%;
+    }
+
+    // Keep existing Flarum Tags markup compact. The board eyebrow above is the
+    // primary context; tags here remain the canonical footer context.
+    > .item-tags {
+      .TagsLabel {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 4px;
+      }
+
+      .TagLabel {
+        border: 0;
+        border-radius: 999px !important;
+        padding: 0.12em 0.45em;
+        font-size: 11.5px;
+        line-height: 1.35;
+      }
+    }
+  }
+
+  .DiscussionListItem-count {
+    grid-area: count;
+    position: static;
+    margin: 2px 0 0;
+    align-self: end;
+    justify-self: end;
+    color: var(--muted-color);
+    font-size: 12px;
+  }
+
+  .DiscussionListItem-controls {
+    display: block;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 3;
+    opacity: 1;
+
+    > .Dropdown-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      min-height: 44px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      box-shadow: none;
+      color: var(--muted-color);
+
+      &:hover,
+      &:focus-visible {
+        background: var(--body-bg);
+        color: var(--heading-color);
+      }
+    }
+  }
+
+  @media (any-hover: none) {
+    .DiscussionListItem-controls > .Dropdown-toggle {
+      display: inline-flex;
+    }
+  }
+
+  @media @phone {
+    margin-left: 8px;
+    margin-right: 8px;
+    padding: 11px 10px 10px;
+
+    .DiscussionListItem-content {
+      padding: 0;
+      column-gap: 8px;
+    }
+
+    .DiscussionListItem-main {
+      padding-right: 48px;
+    }
+
+    .DiscussionListItem-title {
+      font-size: 16.5px;
+    }
+
+    .DiscussionListItem-flatRateCover {
+      border-radius: 10px;
+    }
+
+    .DiscussionListItem-count {
+      margin-right: 0;
+    }
+  }
+
+  @media @tablet-up {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 720px;
+
+    &:hover {
+      background: var(--control-bg);
+    }
+  }
+}
