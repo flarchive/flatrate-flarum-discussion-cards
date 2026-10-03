@@ -2,13 +2,17 @@
 
 > **Read-only archive of released versions of flatrate/flarum-discussion-cards.** Not for installation: use [Packagist](https://packagist.org/packages/flatrate/flarum-discussion-cards) or the [upstream repository](https://github.com/mrkcntrmn/flatrate-flarum-discussion-cards).
 
-**0** versions archived · Latest: [`v0.1.4`](https://github.com/flarchive/flatrate-flarum-discussion-cards/tree/archive/v0.1.4) · License: `MIT` · Flarum: `^1.8.19`
+**5** versions archived · Latest: [`v0.1.4`](https://github.com/flarchive/flatrate-flarum-discussion-cards/tree/archive/v0.1.4) · License: `MIT` · Flarum: `^1.8.19`
 
 ## Archived Versions
 
 | Version | Released | Flarum | Source |
 |---|---|---|---|
-| — | — | — | — |
+| `v0.1.0` | 2026-09-24 | `^1.8.19` | [Browse](https://github.com/flarchive/flatrate-flarum-discussion-cards/tree/archive/v0.1.0) |
+| `v0.1.1` | 2026-09-24 | `^1.8.19` | [Browse](https://github.com/flarchive/flatrate-flarum-discussion-cards/tree/archive/v0.1.1) |
+| `v0.1.2` | 2026-09-24 | `^1.8.19` | [Browse](https://github.com/flarchive/flatrate-flarum-discussion-cards/tree/archive/v0.1.2) |
+| `v0.1.3` | 2026-09-24 | `^1.8.19` | [Browse](https://github.com/flarchive/flatrate-flarum-discussion-cards/tree/archive/v0.1.3) |
+| `v0.1.4` | 2026-10-01 | `^1.8.19` | [Browse](https://github.com/flarchive/flatrate-flarum-discussion-cards/tree/archive/v0.1.4) |
 
 Catalog entry: [packages/flatrate-flarum-discussion-cards.json](https://github.com/flarchive/archive-index/blob/main/packages/flatrate-flarum-discussion-cards.json)
 
